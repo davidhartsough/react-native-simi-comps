@@ -1,6 +1,6 @@
 {
   "name": "react-native-simi-comps",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Simple Minimal Components for React Native",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
