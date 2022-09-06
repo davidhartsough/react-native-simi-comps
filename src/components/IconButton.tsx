@@ -11,6 +11,7 @@ export default function IconButton({
   size = 24,
   color,
   bordered = true,
+  align,
 }: {
   icon: IconOptions;
   onPress: PressableProps["onPress"];
@@ -18,6 +19,13 @@ export default function IconButton({
   size?: number;
   color?: string;
   bordered?: boolean;
+  align?:
+    | "center"
+    | "flex-start"
+    | "flex-end"
+    | "stretch"
+    | "baseline"
+    | "auto";
 }) {
   const borderColor = useThemeColor("border");
   return (
@@ -31,6 +39,7 @@ export default function IconButton({
           justifyContent: "center",
           alignItems: "center",
           padding: bordered ? 6 : 8,
+          alignSelf: align,
         },
         style,
       ]}
