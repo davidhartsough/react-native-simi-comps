@@ -17,7 +17,12 @@ import TextLink from "./components/TextLink";
 import Toggle from "./components/Toggle";
 import View from "./components/View";
 import useThemeColor from "./useThemeColor";
-import PrimaryColorContext from "./PrimaryColorContext";
+import {
+  PrimaryColorContext,
+  PrimaryColorProvider,
+  usePrimaryColor,
+} from "./PrimaryColorContext";
+import colors from "./colors";
 
 export {
   ActionButton,
@@ -41,4 +46,7 @@ export {
   View,
   useThemeColor,
   PrimaryColorContext,
+  PrimaryColorProvider,
+  usePrimaryColor,
+  colors,
 };
