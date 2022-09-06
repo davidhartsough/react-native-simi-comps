@@ -2,22 +2,13 @@ import React from "react";
 import { Pressable, PressableProps } from "react-native";
 
 import useThemeColor from "../useThemeColor";
-import PrimaryColorContext from "../PrimaryColorContext";
+import { usePrimaryColor } from "../PrimaryColorContext";
 
 import Text from "./Text";
 
 type ButtonTypeOptions = "default" | "primary" | "danger";
 
-const dangerColor = "#f65555"; // #e82110
-function getColor(
-  type: ButtonTypeOptions,
-  primaryColor: string,
-  defaultColor: string
-): string {
-  if (type === "danger") return dangerColor;
-  if (type === "primary") return primaryColor;
-  return defaultColor;
-}
+const dangerColor = "#f65555";
 
 export default function TextButton({
   text,
@@ -46,54 +37,59 @@ export default function TextButton({
   marginLeft?: number;
   marginRight?: number;
 }) {
-  const themedTextColor = type !== "default" ? "#fff" : useThemeColor("text");
+  const defaultTextColor = useThemeColor("text");
+  const defaultBorderColor = useThemeColor("border");
+  const disabledTextColor = useThemeColor("disabledText");
+  const disabledBgColor = useThemeColor("disabledBg");
+  const disabledBorderColor = useThemeColor("disabledBorder");
+  const primaryColor = usePrimaryColor();
+  const backgroundColor =
+    bgColor ?? type === "primary"
+      ? primaryColor
+      : type === "danger"
+      ? dangerColor
+      : "transparent";
+  const borderColor =
+    bgColor ?? type === "primary"
+      ? primaryColor
+      : type === "danger"
+      ? dangerColor
+      : defaultBorderColor;
+  const color = textColor ?? type === "default" ? defaultTextColor : "#fff";
   return (
-    <PrimaryColorContext.Consumer>
-      {(primaryColor) => (
-        <Pressable
-          onPress={onPress}
-          disabled={disabled}
-          style={{
-            flex: flex ? 1 : 0,
-            flexShrink: flex === false ? 1 : undefined,
-            flexGrow: flex === false ? 0 : undefined,
-            borderWidth: 1,
-            borderRadius: 8,
-            paddingVertical: 8,
-            paddingHorizontal: 16,
-            justifyContent: "center",
-            alignItems: "center",
-            elevation: 0,
-            margin,
-            marginHorizontal,
-            marginVertical,
-            marginLeft,
-            marginRight,
-            backgroundColor: disabled
-              ? useThemeColor("disabledBg")
-              : bgColor ?? getColor(type, primaryColor, "transparent"),
-            borderColor: disabled
-              ? useThemeColor("disabledBorder")
-              : bgColor ??
-                getColor(type, primaryColor, useThemeColor("border")),
-          }}
-        >
-          <Text
-            text={text}
-            color={
-              disabled
-                ? useThemeColor("disabledText")
-                : textColor ?? themedTextColor
-            }
-            size={18}
-            bold
-            centered
-            spaced
-            numberOfLines={1}
-            selectable={false}
-          />
-        </Pressable>
-      )}
-    </PrimaryColorContext.Consumer>
+    <Pressable
+      onPress={onPress}
+      disabled={disabled}
+      style={{
+        flex: flex ? 1 : 0,
+        flexShrink: flex === false ? 1 : undefined,
+        flexGrow: flex === false ? 0 : undefined,
+        borderWidth: 1,
+        borderRadius: 8,
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        justifyContent: "center",
+        alignItems: "center",
+        elevation: 0,
+        margin,
+        marginHorizontal,
+        marginVertical,
+        marginLeft,
+        marginRight,
+        backgroundColor: disabled ? disabledBgColor : backgroundColor,
+        borderColor: disabled ? disabledBorderColor : borderColor,
+      }}
+    >
+      <Text
+        text={text}
+        color={disabled ? disabledTextColor : color}
+        size={18}
+        bold
+        centered
+        spaced
+        numberOfLines={1}
+        selectable={false}
+      />
+    </Pressable>
   );
 }

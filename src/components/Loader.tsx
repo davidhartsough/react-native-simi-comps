@@ -1,22 +1,15 @@
 import React from "react";
 import { ActivityIndicator } from "react-native";
 
-import PrimaryColorContext from "../PrimaryColorContext";
+import { usePrimaryColor } from "../PrimaryColorContext";
 
 import View from "./View";
 
-export default function Loader({
-  size = "large",
-}: {
-  size?: "large" | "small";
-}) {
+export default function Loader({ size = 24 }: { size?: number }) {
+  const primaryColor = usePrimaryColor();
   return (
-    <PrimaryColorContext.Consumer>
-      {(primaryColor) => (
-        <View flexed padded={size === "large"} centered>
-          <ActivityIndicator color={primaryColor} size={size} />
-        </View>
-      )}
-    </PrimaryColorContext.Consumer>
+    <View flexed centered>
+      <ActivityIndicator color={primaryColor} size={size} />
+    </View>
   );
 }
