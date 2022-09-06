@@ -76,6 +76,7 @@ export default function TextButton({
         marginVertical,
         marginLeft,
         marginRight,
+        maxHeight: 42,
         backgroundColor: disabled ? disabledBgColor : backgroundColor,
         borderColor: disabled ? disabledBorderColor : borderColor,
       }}
