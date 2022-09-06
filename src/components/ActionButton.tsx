@@ -7,7 +7,7 @@ import PrimaryColorContext from "../PrimaryColorContext";
 import Icon, { IconOptions } from "./Icon";
 import Text from "./Text";
 
-export default function ThemedActionButton({
+export default function ActionButton({
   text,
   icon,
   onPress,
