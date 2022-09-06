@@ -82,6 +82,7 @@ export default function ActionButton({
         text={text}
         color={textColor}
         marginRight={2}
+        selectable={false}
       />
     </Pressable>
   );
