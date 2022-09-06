@@ -1,0 +1,70 @@
+{
+  "name": "react-native-simi-comps",
+  "version": "0.1.0",
+  "description": "Simple Minimal Components for React Native",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "type": "module",
+  "react-native": "src/index",
+  "source": "src/index",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "module": "dist/index.js",
+  "scripts": {
+    "prebuild": "rm -r dist/*",
+    "build": "tsc",
+    "rebuild": "tsc",
+    "size": "size-limit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "sideEffects": false,
+  "keywords": [
+    "simple",
+    "minimal",
+    "simplistic",
+    "minimalistic",
+    "react",
+    "native",
+    "components"
+  ],
+  "size-limit": [
+    {
+      "path": "dist/index.js"
+    }
+  ],
+  "author": "davidhartsough <hartsoughdavid@gmail.com> (https://github.com/davidhartsough)",
+  "license": "ISC",
+  "repository": "https://github.com/davidhartsough/react-native-simi-comps",
+  "bugs": {
+    "url": "https://github.com/davidhartsough/react-native-simi-comps/issues"
+  },
+  "homepage": "https://github.com/davidhartsough/react-native-simi-comps#readme",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "devDependencies": {
+    "@expo/vector-icons": "^13.0.0",
+    "@size-limit/preset-small-lib": "^8.0.1",
+    "@types/react": "^18.0.18",
+    "@types/react-native": "^0.69.6",
+    "@typescript-eslint/eslint-plugin": "^5.36.1",
+    "@typescript-eslint/parser": "^5.36.1",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-react": "^7.31.6",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "size-limit": "^8.0.1",
+    "typescript": "^4.8.2"
+  },
+  "peerDependencies": {
+    "@expo/vector-icons": ">=13",
+    "react": ">=16",
+    "react-native": ">=0.68"
+  }
+}
